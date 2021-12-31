@@ -18,8 +18,14 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from '@ioc:Adonis/Core/Route';
 
 Route.get('/', async () => {
-  return { hello: 'world' }
-})
+  return { hello: 'world' };
+});
+
+Route.group(() => {
+  Route.post('/register', 'UsersController.register');
+  Route.post('/login', 'UsersController.login');
+  Route.post('/logout', 'UsersController.logout');
+}).prefix('api/v1/users');
