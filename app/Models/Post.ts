@@ -10,6 +10,12 @@ export default class Post extends BaseModel {
   public title: string;
 
   @column()
+  public content: string;
+
+  @column()
+  public likesCount: number;
+
+  @column()
   public userId: number;
 
   @belongsTo(() => User)
