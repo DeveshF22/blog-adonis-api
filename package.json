@@ -2,10 +2,14 @@
   "name": "blog-adonis-api",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "16.8.0",
+    "yarn": "1.22.10"
+  },
   "scripts": {
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
-    "start": "node server.js",
+    "start": "ENV_SILENT=true node build/server.js",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write ."
   },
