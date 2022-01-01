@@ -5,8 +5,8 @@
  * file.
  */
 
-import Env from '@ioc:Adonis/Core/Env';
-import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database';
+import Env from '@ioc:Adonis/Core/Env'
+import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 
 const databaseConfig: DatabaseConfig = {
   /*
@@ -41,9 +41,6 @@ const databaseConfig: DatabaseConfig = {
         user: Env.get('PG_USER'),
         password: Env.get('PG_PASSWORD', ''),
         database: Env.get('PG_DB_NAME'),
-        ssl: {
-          rejectUnauthorized: false,
-        },
       },
       migrations: {
         naturalSort: true,
@@ -51,7 +48,8 @@ const databaseConfig: DatabaseConfig = {
       healthCheck: false,
       debug: false,
     },
-  },
-};
 
-export default databaseConfig;
+  }
+}
+
+export default databaseConfig
