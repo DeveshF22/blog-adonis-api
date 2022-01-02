@@ -25,6 +25,10 @@ Route.group(() => {
     return { hello: 'world' };
   });
   Route.resource('/posts', 'PostsController').apiOnly();
+
+  // Like actions
+  Route.get('/posts/:id/like', 'LikesController.index');
+  Route.post('/posts/:id/like', 'LikesController.like');
 }).prefix('api/v1/');
 
 Route.group(() => {
