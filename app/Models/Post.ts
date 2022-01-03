@@ -1,5 +1,15 @@
 import { DateTime } from 'luxon';
-import { BaseModel, column, belongsTo, BelongsTo, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm';
+import {
+  BaseModel,
+  column,
+  belongsTo,
+  BelongsTo,
+  hasMany,
+  HasMany,
+  beforeFetch,
+  beforeFind,
+  ModelQueryBuilderContract,
+} from '@ioc:Adonis/Lucid/Orm';
 import User from './User';
 import Like from './Like';
 
@@ -12,9 +22,6 @@ export default class Post extends BaseModel {
 
   @column()
   public content: string;
-
-  @column()
-  public likesCount: number;
 
   @column()
   public userId: number;
@@ -30,4 +37,10 @@ export default class Post extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
+
+  @beforeFetch()
+  @beforeFind()
+  public static fetchLikes(query: ModelQueryBuilderContract<typeof Post>) {
+    query.preload('likes');
+  }
 }
