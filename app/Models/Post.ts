@@ -12,6 +12,7 @@ import {
 } from '@ioc:Adonis/Lucid/Orm';
 import User from './User';
 import Like from './Like';
+import Comment from './Comment';
 
 export default class Post extends BaseModel {
   @column({ isPrimary: true })
@@ -32,6 +33,9 @@ export default class Post extends BaseModel {
   @hasMany(() => Like)
   public likes: HasMany<typeof Like>;
 
+  @hasMany(() => Comment)
+  public comments: HasMany<typeof Comment>;
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;
 
@@ -42,5 +46,6 @@ export default class Post extends BaseModel {
   @beforeFind()
   public static fetchLikes(query: ModelQueryBuilderContract<typeof Post>) {
     query.preload('likes');
+    query.preload('comments');
   }
 }
