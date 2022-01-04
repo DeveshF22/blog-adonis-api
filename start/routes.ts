@@ -26,6 +26,13 @@ Route.group(() => {
   });
   Route.resource('/posts', 'PostsController').apiOnly();
 
+  // Comment actions
+  Route.get('/posts/:id/comments', 'CommentsController.index');
+  Route.post('/posts/:id/comments', 'CommentsController.store');
+  Route.get('/posts/:post_id/comments/:comment_id', 'CommentsController.show');
+  Route.put('/posts/:post_id/comments/:comment_id', 'CommentsController.update');
+  Route.delete('/posts/:post_id/comments/:comment_id', 'CommentsController.destroy');
+
   // Like actions
   Route.get('/posts/:id/like', 'LikesController.index');
   Route.post('/posts/:id/like', 'LikesController.like');
